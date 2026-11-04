@@ -1,9 +1,13 @@
 // Articles for /insights/<slug>/. Body is a list of blocks: { h }, { p }, { list: [] }.
+// `related` links the article to a service page (where it is shown as a related insight).
+
+import { MORE_ARTICLES } from "./insights-more.mjs";
 
 export const ARTICLES = [
   {
     slug: "signs-your-month-end-close-needs-attention",
     category: "Record to Report",
+    topic: "Finance Operations",
     title: "Seven signs your month-end close needs attention",
     dek: "A slow, stressful close is rarely caused by one big problem. It is usually several small ones adding up. Here is what to look for.",
     minutes: 6,
@@ -34,6 +38,7 @@ export const ARTICLES = [
   {
     slug: "where-to-start-with-finance-automation",
     category: "Finance Transformation",
+    topic: "Transformation",
     title: "Where to start with finance automation",
     dek: "Automation works best when it follows good process, not when it replaces it. A practical way to choose your first projects.",
     minutes: 5,
@@ -60,6 +65,7 @@ export const ARTICLES = [
   {
     slug: "erp-migration-checklist",
     category: "ERP",
+    topic: "ERP & Technology",
     title: "Planning an ERP migration: a practical checklist",
     dek: "Most ERP migration problems are visible long before go-live. The questions to answer early, while they are still cheap to fix.",
     minutes: 7,
@@ -86,4 +92,5 @@ export const ARTICLES = [
       { p: "Agree scope and owners, clean the data early, map every integration, test end-to-end with real data, train the people who will use it and plan support for the first months. Projects that do these things well rarely have surprises at go-live." },
     ],
   },
+  ...MORE_ARTICLES,
 ];

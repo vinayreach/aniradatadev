@@ -377,13 +377,6 @@ export const FAQS = [
   ] },
 ];
 
-export const VALUES = [
-  { title: "Value for every stakeholder", text: "Offering valued services to clients, colleagues and partners alike." },
-  { title: "Genuine interest and trust", text: "We care about the outcome and earn trust through how we work." },
-  { title: "Teamwork", text: "Working together towards a common goal, with our clients and each other." },
-  { title: "Empowerment and transparency", text: "Openness across the organization, and people trusted to take ownership." },
-];
-
 export const FOCUS = [
   "Accounting & Finance Operations",
   "Finance Transformation & Automation",
@@ -434,3 +427,65 @@ export const JOBS = [
     ],
   },
 ];
+
+// ---------- About page ----------
+export const ABOUT = {
+  mission: "To help businesses run their finance operations and technology with clarity, control and confidence.",
+  vision: "To be the partner growing businesses trust for both their finance operations and the technology behind them.",
+  apart: [
+    { t: "Finance and technology under one roof", d: "Accountants and engineers work side by side, so process fixes and system changes are designed together rather than handed over the wall." },
+    { t: "Process discipline", d: "Documented procedures, reviewer checks and exception logs are how we work every day, not extras added for an audit." },
+    { t: "Practical over theoretical", d: "We start with your existing systems and people, and recommend new tools only where they clearly pay off." },
+    { t: "Flexible engagement", d: "Managed operations, projects, dedicated teams or individual professionals, combined in whatever way suits you." },
+  ],
+  connect: [
+    { t: "Run", d: "Day-to-day operations delivered accurately and on time.", practices: ["finance-accounting", "it-staffing"] },
+    { t: "Improve", d: "Better processes, systems and controls.", practices: ["finance-transformation", "erp"] },
+    { t: "Build", d: "Software, integrations and platforms.", practices: ["technology", "cloud-devops"] },
+  ],
+  values: [
+    { t: "Value for every stakeholder", d: "Offering valued services to clients, colleagues and partners alike.", practice: ["We measure success by outcomes for the client", "We treat colleagues and partners with the same care"] },
+    { t: "Genuine interest and trust", d: "We care about the outcome and earn trust through how we work.", practice: ["We ask questions until we understand the business", "We raise issues early, even when it is uncomfortable"] },
+    { t: "Teamwork", d: "Working together towards a common goal, with our clients and each other.", practice: ["Finance and technology teams plan work together", "Knowledge is shared, never held by one person"] },
+    { t: "Empowerment and transparency", d: "Openness across the organization, and people trusted to take ownership.", practice: ["Clear ownership for every task and deliverable", "Open reporting on what is working and what is not"] },
+  ],
+  commitments: [
+    "We will document how your work is done, and keep it current",
+    "We will tell you early when something is off track",
+    "We will respect your controls and approval authority",
+    "We will handle your data with care and limit access by role",
+    "We will report on performance at an agreed rhythm",
+    "We will keep looking for ways to improve",
+  ],
+};
+
+// ---------- Careers page ----------
+export const CAREERS = {
+  why: [
+    { t: "Varied, meaningful work", d: "Projects across finance operations, ERP, software, cloud and DevOps, so there is always something new to learn." },
+    { t: "Learn from experienced colleagues", d: "Mentoring from people who have done the work, and who want to see you succeed." },
+    { t: "Skills that keep growing", d: "Advanced-level programming and skills training that prepare you for demanding projects." },
+    { t: "Fair and rewarding", d: "We are an equal opportunity employer offering competitive salaries and comprehensive benefits." },
+  ],
+  areas: [
+    { icon: "code", t: "Software development", d: "Design and build applications and integrations in modern languages." },
+    { icon: "cloud", t: "DevOps & cloud", d: "Build CI/CD pipelines, automate releases and run cloud environments." },
+    { icon: "layers", t: "Database administration", d: "Keep Oracle databases fast, available and recoverable." },
+    { icon: "workflow", t: "ERP consulting", d: "Implement, configure and support leading ERP platforms." },
+    { icon: "ledger", t: "Finance & accounting", d: "Run AP, AR, close, reporting and payroll processes for clients." },
+    { icon: "chart", t: "Data & analytics", d: "Build data pipelines, reports and dashboards that drive decisions." },
+  ],
+  growth: [
+    { t: "Placement", d: "We match you with roles and projects where your skills fit and can grow, with great companies in the IT industry.", points: ["Roles aligned to your experience", "Support through every step of the process"] },
+    { t: "Mentoring", d: "Experienced colleagues guide you on client work, technical decisions and professional growth.", points: ["Guidance on real projects", "Regular conversations about your development"] },
+    { t: "Advanced Level Programming", d: "Focused training that sharpens your technical skills for demanding projects.", points: ["Deepen your core technologies", "Prepare for more senior responsibilities"] },
+  ],
+  process: ["Apply by email", "Resume review", "Technical or functional interview", "Final conversation", "Offer & onboarding"],
+  faqs: [
+    { q: "How do I apply?", a: "Email your resume to info@aniradatadev.com with the job title in the subject line." },
+    { q: "What should I include?", a: "An up-to-date resume that shows your experience with the technologies or processes listed in the role. A short note about why the role interests you is welcome." },
+    { q: "Can I apply if there is no matching opening?", a: "Yes. Send your resume and the kind of role you are looking for, and we will keep it in mind for future openings." },
+    { q: "Can I apply for more than one role?", a: "Yes. Mention each role you are interested in when you email us." },
+    { q: "Where is the office?", a: "Our office is on Capital Park Road, Madhapur, Hyderabad, Telangana, India." },
+  ],
+};

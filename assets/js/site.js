@@ -39,6 +39,26 @@
     items.forEach((el) => el.classList.add("is-visible"));
   }
 
+  // Insights topic filter.
+  const bar = document.querySelector("[data-filter-bar]");
+  if (bar) {
+    const cards = document.querySelectorAll("[data-filter-list] [data-topic]");
+    bar.addEventListener("click", (event) => {
+      const btn = event.target.closest("[data-filter]");
+      if (!btn) return;
+      bar.querySelectorAll("[data-filter]").forEach((b) => {
+        const active = b === btn;
+        b.classList.toggle("is-active", active);
+        b.setAttribute("aria-pressed", String(active));
+      });
+      const topic = btn.dataset.filter;
+      cards.forEach((card) => {
+        card.hidden = topic !== "all" && card.dataset.topic !== topic;
+        card.classList.add("is-visible");
+      });
+    });
+  }
+
   // Contact form.
   const form = document.querySelector("[data-contact-form]");
   if (!form) return;
