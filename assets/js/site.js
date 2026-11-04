@@ -20,23 +20,47 @@
     document.querySelectorAll(".site-nav a").forEach((a) => a.addEventListener("click", () => setOpen(false)));
   }
 
-  // Reveal-on-scroll.
-  const items = document.querySelectorAll("[data-reveal]");
+  // Reveal-on-scroll. The observer handles normal scrolling; the sweep catches
+  // anything skipped by fast scrolls, anchor jumps or the End key, so no section
+  // is ever left invisible.
+  const pending = new Set(document.querySelectorAll("[data-reveal]"));
+  const reveal = (el) => {
+    el.classList.add("is-visible");
+    pending.delete(el);
+  };
   if ("IntersectionObserver" in window && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
     const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-            io.unobserve(entry.target);
-          }
-        });
-      },
+      (entries) => entries.forEach((entry) => {
+        if (entry.isIntersecting || entry.boundingClientRect.top < 0) {
+          reveal(entry.target);
+          io.unobserve(entry.target);
+        }
+      }),
       { rootMargin: "0px 0px -8% 0px" },
     );
-    items.forEach((el) => io.observe(el));
+    pending.forEach((el) => io.observe(el));
+    let queued = false;
+    const sweep = () => {
+      queued = false;
+      pending.forEach((el) => {
+        if (el.getBoundingClientRect().top < window.innerHeight) {
+          reveal(el);
+          io.unobserve(el);
+        }
+      });
+    };
+    const queueSweep = () => {
+      if (!queued && pending.size) {
+        queued = true;
+        requestAnimationFrame(sweep);
+      }
+    };
+    window.addEventListener("scroll", queueSweep, { passive: true });
+    window.addEventListener("resize", queueSweep);
+    window.addEventListener("hashchange", queueSweep);
+    window.addEventListener("load", queueSweep);
   } else {
-    items.forEach((el) => el.classList.add("is-visible"));
+    pending.forEach(reveal);
   }
 
   // Insights topic filter.

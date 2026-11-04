@@ -694,7 +694,7 @@ const contact = page({
 ${plainHero({ kicker: "Contact us", title: "Let's talk about your priorities.", text: "Tell us a little about your business and what you need. Our team will be in touch.", trail: [{ label: "Contact" }] })}
 <section class="section section-flush-top">
   <div class="container contact-grid">
-    <form class="contact-form" action="/api/contact" method="post" data-contact-form novalidate>
+    <form class="contact-form" action="/api/contact/" method="post" data-contact-form novalidate>
       <div class="field-row">
         <label class="field"><span>Full name *</span><input name="name" autocomplete="name" required maxlength="120"></label>
         <label class="field"><span>Work email *</span><input name="email" type="email" autocomplete="email" required maxlength="254"></label>
