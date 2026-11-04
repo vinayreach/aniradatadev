@@ -217,14 +217,25 @@ def main():
 
     # Old Google Sites URLs must redirect (only on Vercel).
     if LIVE and ONLY in (None, "desktop"):
-        for old, new in [("/home", "/"), ("/about-us", "/about/"), ("/contact-us", "/contact/")]:
-            req = urllib.request.Request(BASE + old, method="HEAD")
-            try:
-                final = urllib.request.urlopen(req).geturl()
-                if not final.rstrip("/").endswith(new.rstrip("/")):
-                    fail(f"redirect {old}", f"ended at {final}")
-            except Exception as e:  # noqa: BLE001
-                fail(f"redirect {old}", str(e))
+        import http.client
+        from urllib.parse import urljoin, urlsplit
+
+        def follow(url, hops=5):  # urllib on older Pythons does not follow 308, so follow by hand
+            for _ in range(hops):
+                parts = urlsplit(url)
+                conn = http.client.HTTPSConnection(parts.netloc) if parts.scheme == "https" else http.client.HTTPConnection(parts.netloc)
+                conn.request("HEAD", parts.path or "/")
+                resp = conn.getresponse()
+                if resp.status in (301, 302, 307, 308) and resp.getheader("Location"):
+                    url = urljoin(url, resp.getheader("Location"))
+                    continue
+                return resp.status, url
+            return None, url
+
+        for old, new in [("/home", "/"), ("/about-us", "/about/"), ("/contact-us", "/contact/"), ("/about-us/", "/about/")]:
+            status, final = follow(BASE + old)
+            if status != 200 or urlsplit(final).path != new:
+                fail(f"redirect {old}", f"ended at {final} (HTTP {status})")
 
     print(f"\n{len(failures)} failures, {len(warnings)} warnings")
     for f in failures:
