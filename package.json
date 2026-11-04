@@ -1,0 +1,16 @@
+{
+  "name": "anira-website",
+  "private": true,
+  "type": "module",
+  "description": "Static website for Anira Data DevOps, deployed on Vercel.",
+  "scripts": {
+    "build:html": "node build/build.mjs",
+    "preview": "python3 -m http.server 4173"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "nodemailer": "^10.3.1"
+  }
+}
